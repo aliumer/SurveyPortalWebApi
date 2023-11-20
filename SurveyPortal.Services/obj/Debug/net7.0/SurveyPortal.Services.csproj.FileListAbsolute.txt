@@ -1,0 +1,17 @@
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\obj\Debug\net7.0\SurveyPortal.Services.csproj.AssemblyReference.cache
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\obj\Debug\net7.0\SurveyPortal.Services.GeneratedMSBuildEditorConfig.editorconfig
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\obj\Debug\net7.0\SurveyPortal.Services.AssemblyInfoInputs.cache
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\obj\Debug\net7.0\SurveyPortal.Services.AssemblyInfo.cs
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\obj\Debug\net7.0\SurveyPortal.Services.csproj.CoreCompileInputs.cache
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\bin\Debug\net7.0\SurveyPortal.Services.deps.json
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\bin\Debug\net7.0\SurveyPortal.Services.dll
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\bin\Debug\net7.0\SurveyPortal.Services.pdb
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\bin\Debug\net7.0\SurveyPortal.DbModel.dll
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\bin\Debug\net7.0\SurveyPortal.Domain.dll
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\bin\Debug\net7.0\SurveyPortal.Domain.pdb
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\bin\Debug\net7.0\SurveyPortal.DbModel.pdb
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\obj\Debug\net7.0\SurveyPortal.Services.csproj.CopyComplete
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\obj\Debug\net7.0\SurveyPortal.Services.dll
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\obj\Debug\net7.0\refint\SurveyPortal.Services.dll
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\obj\Debug\net7.0\SurveyPortal.Services.pdb
+E:\Development\Projects\SurveyPortal\SurveyPortal.Services\obj\Debug\net7.0\ref\SurveyPortal.Services.dll

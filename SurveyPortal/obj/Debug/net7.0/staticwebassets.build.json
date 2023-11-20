@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "9euIJ2IpkjTWGFfBG3WGyrE3aH6MGMQq2g+f7GzQDRw=",
+  "Source": "SurveyPortal",
+  "BasePath": "_content/SurveyPortal",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
