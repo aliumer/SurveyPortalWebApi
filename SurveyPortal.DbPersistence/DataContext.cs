@@ -24,10 +24,41 @@ namespace SurveyPortal.DbPersistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Employee>().HasKey(e => e.Id);
-            modelBuilder.Entity<Survey>().HasKey(s => s.Id);
-            modelBuilder.Entity<Question>().HasKey(s => s.Id);
-            modelBuilder.Entity<Option>().HasKey(s => s.Id);
+
+            modelBuilder.Entity<Employee>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+            });
+
+            modelBuilder.Entity<Survey>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+
+                entity.HasMany(q => q.Questions)
+                    .WithOne(entity => entity.Survey)
+                    .HasForeignKey(entity => entity.SurveyId)
+                    .HasPrincipalKey(e => e.Id);
+            });
+
+            modelBuilder.Entity<Question>(entity => 
+            {
+                entity.HasKey(e => e.Id);
+                
+                entity.HasOne(q => q.Survey)
+                    .WithMany(x => x.Questions)
+                    .HasForeignKey(x => x.SurveyId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+                entity.HasMany(e => e.Options)
+                    .WithOne(e => e.Question)
+                    .HasForeignKey(e => e.QuestionId);
+
+            });
+
+            modelBuilder.Entity<Option>(entity => 
+            {
+                entity.HasKey(e => e.Id); 
+            });
 
         }
 

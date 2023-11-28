@@ -396,3 +396,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+/SurveyPortal/bin
+/SurveyPortal/obj
+**/bin
+**/obj
+/SurveyPortal/appsettings.json
+**/.vs

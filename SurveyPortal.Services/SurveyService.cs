@@ -31,7 +31,7 @@ namespace SurveyPortal.Services
 
         public async Task<List<Survey>> GetSurveys()
         {
-            return await _dataContext.Surveys.ToListAsync<Survey>();
+            return await _dataContext.Surveys.Include(s => s.Questions).ThenInclude(q => q.Options).ToListAsync<Survey>();
         }
 
         public async Task UpdateSurvey(Survey survey)
@@ -40,7 +40,6 @@ namespace SurveyPortal.Services
             s.StartDate = survey.StartDate;
             s.EndDate = survey.EndDate;
             s.SurveyName = survey.SurveyName;
-            s.Questions = survey.Questions;
             await _dataContext.SaveChangesAsync(true);
             
         }

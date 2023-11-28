@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
 namespace SurveyPortal.DbModel.Entity
 {
@@ -15,8 +17,12 @@ namespace SurveyPortal.DbModel.Entity
         public int Id { get; set; }
         public string QuestionType { get; set; }
         public string QuestionText { get; set; } = string.Empty;
-        public virtual ICollection<Option> Options { get; set; }
-        public virtual Survey Survey { get; set; }
+        public ICollection<Option> Options { get; set; }
+
+        [JsonIgnore]
+        public Survey? Survey { get; set; }
+        [JsonIgnore]
+        public int? SurveyId { get; set; }
     }
 
     public class Option
@@ -24,8 +30,11 @@ namespace SurveyPortal.DbModel.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int QuestionId { get; set; }
         public string Label { get; set; }
-        public virtual Question Question { get; set; }
+
+        [JsonIgnore]
+        public Question? Question { get; set; }
+        [JsonIgnore]
+        public int? QuestionId { get; set; }
     }
 }

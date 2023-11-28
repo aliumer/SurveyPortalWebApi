@@ -16,6 +16,6 @@ namespace SurveyPortal.DbModel.Entity
         public string SurveyName { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public virtual ICollection<Question> Questions { get; set; }
+        public ICollection<Question> Questions { get; set; }
     }
 }
