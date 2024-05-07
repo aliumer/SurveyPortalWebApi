@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
 namespace SurveyPortal.DbModel.Entity
@@ -21,20 +20,8 @@ namespace SurveyPortal.DbModel.Entity
 
         [JsonIgnore]
         public Survey? Survey { get; set; }
-        [JsonIgnore]
-        public int? SurveyId { get; set; }
+        public int SurveyId { get; set; }
     }
 
-    public class Option
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public string Label { get; set; }
-
-        [JsonIgnore]
-        public Question? Question { get; set; }
-        [JsonIgnore]
-        public int? QuestionId { get; set; }
-    }
+    
 }

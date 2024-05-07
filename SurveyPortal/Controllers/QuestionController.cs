@@ -33,6 +33,12 @@ namespace SurveyPortal.Controllers
             return await _questionService.GetQuestionsBySurveyId(id);
         }
 
+        [HttpGet("{question-id}")]
+        public async Task<Question> GetQuestionById([FromRoute(Name = "question-id")] int id)
+        {
+            return await _questionService.GetQuestionById(id);
+        }
+
         [HttpDelete("{id}")]
         public async Task DeleteQuestion(int id)
         {

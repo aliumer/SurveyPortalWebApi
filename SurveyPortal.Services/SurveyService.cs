@@ -26,12 +26,18 @@ namespace SurveyPortal.Services
 
         public async Task<Survey> GetSurvey(int id)
         {
-            return await _dataContext.Surveys.FirstOrDefaultAsync(s => s.Id == id);
+            var survey = await _dataContext.Surveys.Include(s => s.Questions).ThenInclude(q => q.Options).FirstOrDefaultAsync(s => s.Id == id);
+            return survey;
         }
 
         public async Task<List<Survey>> GetSurveys()
         {
-            return await _dataContext.Surveys.Include(s => s.Questions).ThenInclude(q => q.Options).ToListAsync<Survey>();
+            var surveys = await _dataContext.Surveys
+                .Include(s => s.Questions)
+                .ThenInclude(q => q.Options)
+                .ToListAsync();
+
+            return surveys;
         }
 
         public async Task UpdateSurvey(Survey survey)

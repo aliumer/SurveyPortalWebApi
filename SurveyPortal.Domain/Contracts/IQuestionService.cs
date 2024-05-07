@@ -13,5 +13,6 @@ namespace SurveyPortal.Domain.Contracts
         Task DeleteQuestion(int id);
         Task UpdateQuestion(Question question);
         Task<List<Question>> GetQuestionsBySurveyId(int id);
+        Task<Question> GetQuestionById(int id);
     }
 }

@@ -15,15 +15,32 @@ builder.Services.AddScoped<IQuestionService, QuestionService>();
 builder.Services.AddScoped<ISurveyService, SurveyService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IDataContext>(s => s.GetRequiredService<DataContext>());
+builder.Services.AddCors();
 
 if (builder != null)
 {
-    string connectionString = builder.Configuration.GetConnectionString("SurveyPortalDbConnection");
-    builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(connectionString));
+    if (builder.Configuration != null)
+    {
+        //string connectionString = builder.Configuration.GetConnectionString("SurveyPortalDbConnection");
+        string connectionString = builder.Configuration.GetConnectionString("defaultConnection").ToString();
+        //builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(connectionString));
+        builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
+
+    }
 
 }
 
 var app = builder.Build();
+
+var _cors = builder.Configuration.GetSection("CorsDomains").Get<string[]>();
+if (_cors != null)
+{
+    app.UseCors(builder => builder.WithOrigins(_cors)
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials()
+    );
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

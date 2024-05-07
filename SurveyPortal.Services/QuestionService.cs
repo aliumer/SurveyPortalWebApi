@@ -19,9 +19,20 @@ namespace SurveyPortal.Services
 
         public async Task DeleteQuestion(int id)
         {
-            Question question = (Question)_dataContext.Questions.Where(s => s.Id == id);
+            var question = await _dataContext.Questions.Include(q => q.Options).FirstOrDefaultAsync(q => q.Id == id);
+            //List<Option> options = await _dataContext.Options.Where(o => o.QuestionId  == id).ToListAsync<Option>();
+            foreach (var o in question.Options)
+            {
+                _dataContext.Options.Remove(o);
+            }
             _dataContext.Questions.Remove(question);
             await _dataContext.SaveChangesAsync(true);
+        }
+
+        public async Task<Question> GetQuestionById(int id)
+        {
+            return await _dataContext.Questions.Include(q => q.Options)
+                .FirstOrDefaultAsync(q => q.Id == id);
         }
 
         public async Task<List<Question>> GetQuestionsBySurveyId(int id)
@@ -32,12 +43,27 @@ namespace SurveyPortal.Services
 
         public async Task UpdateQuestion(Question question)
         {
-            Question q = (Question)_dataContext.Questions.Where(q => q.Id == question.Id);
-            q.Survey.Id = question.Survey.Id;
-            q.Options = question.Options;
-            q.QuestionText = question.QuestionText;
-            q.QuestionType = question.QuestionType;
-            await _dataContext.SaveChangesAsync(true);
+            try
+            {
+                Question q = await _dataContext.Questions.Include(q => q.Options).FirstOrDefaultAsync(q => q.Id == question.Id);
+
+                foreach (var option in q.Options)
+                {
+                    _dataContext.Options.Remove(option);
+                }
+                q.SurveyId = question.SurveyId;
+                q.Options = question.Options;
+                q.QuestionText = question.QuestionText;
+                q.QuestionType = question.QuestionType;
+
+                await _dataContext.SaveChangesAsync(true);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace);
+                throw;
+            }
         }
+
     }
 }
